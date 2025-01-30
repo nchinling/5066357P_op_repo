@@ -1,0 +1,140 @@
+pipeline {
+
+    agent {
+
+        node {
+
+            label 'master'
+
+        }
+
+    }
+
+
+
+    options {
+
+        buildDiscarder logRotator(
+
+                    daysToKeepStr: '15',
+
+                    numToKeepStr: '10'
+
+            )
+
+    }
+
+
+
+    environment {
+
+        APP_NAME = 'INNO_WATER_TECH_APP_PIPELINE'
+	PIPELINE_NAME = 5066357P_op_pipe
+
+    }
+
+
+
+    stages {
+
+        stage('5066357P-opr-s1') {
+
+            steps {
+
+                sh '''
+
+                echo "Stage 1 completed"
+
+                '''
+
+            }
+
+        }
+
+
+
+        stage('5066357P-opr-s2') {
+
+            steps {
+
+                sh '''
+
+
+                echo 'Stage 2 completed.'
+
+                '''
+
+            }
+
+        }
+
+
+
+        stage('5066357P-opr-s3') {
+
+            steps {
+
+                sh 'echo "Stage 3 completed."'
+
+            }
+
+        }
+
+
+
+        stage('5066357P-opr-s4') {
+
+            steps {
+
+                echo 'Stage 4 completed.'
+
+            }
+
+        }
+
+
+
+        stage('5066357P-opr-s5') {
+
+            steps {
+
+                sh 'echo "Stage 5 completed"'
+
+            }
+
+        }
+
+
+	    stage('5066357P-opr-s6') {
+
+            steps {
+
+                sh 'echo "Stage 6 completed."'
+
+            }
+
+        }
+
+
+
+	    stage('5066357P-opr-s7') {
+
+            steps {
+
+                sh 'echo "Stage 7 completed."'
+
+            }
+
+        }
+
+
+
+
+
+    }
+
+}
+
+
+
+
