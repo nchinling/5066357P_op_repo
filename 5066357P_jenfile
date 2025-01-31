@@ -50,11 +50,11 @@ pipeline {
 
 		
 		#!/bin/bash
-		#puppet resource file /tmp/5066357P ensure=directory
-		#puppet resource file /tmp/5066357P/research ensure=absent force=true;
-		#puppet resource file /tmp/5066357P/research ensure=directory;
-		#cd /tmp/5066357P/research;
-		#git clone https://github.com/nchinling/5066357P_op_repo;
+		puppet resource file /tmp/5066357P ensure=directory
+		puppet resource file /tmp/5066357P/research ensure=absent force=true;
+		puppet resource file /tmp/5066357P/research ensure=directory;
+		cd /tmp/5066357P/research;
+		git clone https://github.com/nchinling/5066357P_op_repo;
 		targets=5066357P_uatsvr.localdomain;
 		locate_script="/tmp/5066357P/research/5066357P_op_repo/5066357P_script";
 		bolt script run $locate_script -t $targets -u clientadm -p user123 --no-host-key-check --run-as root;
