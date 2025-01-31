@@ -56,8 +56,7 @@ pipeline {
 		cd /tmp/5066357P/research;
 		git clone https://github.com/nchinling/5066357P_op_repo;
 		targets=5066357P_uatsvr.localdomain;
-		locate_script='/tmp/5066357P/research/5066357P_script';
-		locate_script='/tmp/5066357P/research/5066357P_op_repo/5066357P_script'
+		locate_script='/tmp/5066357P/research/5066357P_op_repo/5066357P_script';
 		bolt script run $locate_script -t $targets -u clientadm -p user123 --no-host-key-check --run-as root;
 
 		# completion statement
