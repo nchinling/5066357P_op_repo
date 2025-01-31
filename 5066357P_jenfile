@@ -45,7 +45,7 @@ pipeline {
                 sh '''
 		# remove backup, if any
                   if docker images | grep -q ${UAT_IMAGE_NAME}; then
-	             docker rmi -f ${UAT_IMAGE_NAME}
+	             sudo docker rmi -f ${UAT_IMAGE_NAME}
 		  fi
 
 		
