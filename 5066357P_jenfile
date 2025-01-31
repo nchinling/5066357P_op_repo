@@ -45,14 +45,14 @@ pipeline {
                 sh '''
 		# remove backup, if any
                   if docker images | grep -q ${UAT_IMAGE_NAME}; then
-	             sudo docker rmi -f ${UAT_IMAGE_NAME}
+	             docker rmi -f ${UAT_IMAGE_NAME}
 		  fi
 
 		
 		#!/bin/bash
 		puppet resource file /tmp/5066357P/research ensure=absent force=true;
 		puppet resource file /tmp/5066357P/research ensure=directory;
-		cd /tmp/clone;
+		cd /tmp/5066357P/research;
 		git clone https://github.com/nchinling/5066357P_op_repo;
 		targets=5066357P_uatsvr.localdomain;
 		locate_script='/tmp/5066357P/research/5066357P_script';
