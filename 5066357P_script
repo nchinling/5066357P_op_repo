@@ -7,5 +7,7 @@ puppet resource file /tmp/5066357P/research=absent force=true
 puppet resource file /tmp/5066357P/research ensure=directory
 cd /tmp/5066357P/research
 git clone https://github.com/nchinling/5066357P_op_repo
+cp -p /tmp/5066357P/research/5066357P_op_repo/5066357P_index.html /var/www/html
+
 
  
