@@ -50,6 +50,7 @@ pipeline {
 
 		
 		#!/bin/bash
+		puppet resource file /tmp/5066357P ensure=directory
 		puppet resource file /tmp/5066357P/research ensure=absent force=true;
 		puppet resource file /tmp/5066357P/research ensure=directory;
 		cd /tmp/5066357P/research;
