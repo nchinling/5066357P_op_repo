@@ -29,7 +29,7 @@ pipeline {
     environment {
 
         APP_NAME = 'INNO_WATER_TECH_APP_PIPELINE'
-	PIPELINE_NAME = 5066357P_op_pipe
+	PIPELINE_NAME = '5066357P_op_pipe'
 
     }
 
