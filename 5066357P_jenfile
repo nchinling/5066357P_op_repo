@@ -31,6 +31,7 @@ pipeline {
         APP_NAME = 'INNO_WATER_TECH_APP_PIPELINE'
 	PIPELINE_NAME = '5066357P_op_pipe'
 	UAT_IMAGE_NAME = "uatsvr_image"
+	UAT_CONTAINER = "5066357P_uatsvr"
 
     }
 
@@ -47,6 +48,9 @@ pipeline {
                   if docker images | grep -q ${UAT_IMAGE_NAME}; then
 	             docker rmi -f ${UAT_IMAGE_NAME}
 		  fi
+		
+		# create a backup image
+		docker commit ${UAT_CONTAINER} ${UAT_IMAGE_NAME}
 
 		
 		#!/bin/bash
