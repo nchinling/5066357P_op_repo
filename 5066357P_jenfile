@@ -124,7 +124,7 @@ pipeline {
             steps {
 		sh '''
  
-		if (userInput == 'Proceed with stress test on uat web server') {
+		if (userInput == 'Proceed with stress test on uat web server'); then {
                         echo "5066357P_OP_S4: Stress test result is good"
                     
 		}
