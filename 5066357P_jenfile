@@ -36,7 +36,6 @@ pipeline {
     }
 
 
-
     stages {
 
         stage('5066357P-opr-s1') {
@@ -67,9 +66,7 @@ pipeline {
                 echo "5066357P_OP_S1: uat web server is backup and updated"
 
                 '''
-
             }
-
         }
 
 
@@ -79,8 +76,18 @@ pipeline {
             steps {
 
                 sh '''
+		
+		curl -Is http://5066357P_uatsvr.localdomain | head -n 1 > /tmp/uatsvr-result-file
+		
+		if grep -q "HTTP/1.1 200 OK" /tmp/uatsvr-result-file; then
+			echo "5066357P_OP_S2: uat svr is running"
 
+		else
+			echo "5066357P_OP_S2: uat svr fails"
 
+		fi
+
+ 
                 echo 'Stage 2 completed.'
 
                 '''
