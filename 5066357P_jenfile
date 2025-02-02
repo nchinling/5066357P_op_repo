@@ -121,9 +121,12 @@ pipeline {
 
         stage('5066357P-opr-s4') {
 
-		echo '5066357P_OP_S4: Stress test result is good'
-            
+		steps{
 
+		     echo '5066357P_OP_S4: Stress test result is good'
+		
+		}
+            
         }
 
 
