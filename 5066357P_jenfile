@@ -32,7 +32,6 @@ pipeline {
 	PIPELINE_NAME = '5066357P_op_pipe'
 	UAT_IMAGE_NAME = "uatsvr_image"
 	UAT_CONTAINER = "5066357P_uatsvr"
-	userInput = ''
 
     }
 
@@ -122,13 +121,7 @@ pipeline {
 
         stage('5066357P-opr-s4') {
 
-		when {
-			expression { return userInput == 'Proceed with stress test on uat web server' }
-		}
-		steps {
 		echo '5066357P_OP_S4: Stress test result is good'
-                
-		}
             
 
         }
