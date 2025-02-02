@@ -105,7 +105,7 @@ pipeline {
 			message: 'Proceed with stress test on UAT web server?',
                         parameters: [
                             choice(
-                                name: 'Action', 
+                                name: '', 
                                 choices: ['Proceed with stress test on uat web server', 'Abort']
                             )
                         ]
@@ -135,9 +135,21 @@ pipeline {
 
             steps {
 
-                sh 'echo "Stage 5 completed"'
+              echo "5066357P_OP_S5: Deploy new update to prod web server?"
+                script {
+                    def userInput = input(
+                        message: 'Proceed to update prod web server?',
+                        parameters: [
+                            choice(
+                                name: '',
+                                choices: ['Proceed to update prod web server', 'Abort']
+                            )
+                        ]
+                    )
+                }
 
-            }
+
+             }
 
         }
 
