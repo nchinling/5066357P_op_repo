@@ -121,18 +121,14 @@ pipeline {
 
         stage('5066357P-opr-s4') {
 
-            steps {
-		sh '''
- 
-		if (userInput == 'Proceed with stress test on uat web server'); then {
-                        echo "5066357P_OP_S4: Stress test result is good"
-                    
+		when {
+			expression { return userInput == 'Proceed with stress test on uat web server' }
 		}
-		
-		fi
-
-		'''
-            }
+		steps {
+		echo '5066357P_OP_S4: Stress test result is good'
+                
+		}
+            
 
         }
 
