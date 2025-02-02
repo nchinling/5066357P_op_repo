@@ -32,6 +32,7 @@ pipeline {
 	PIPELINE_NAME = '5066357P_op_pipe'
 	UAT_IMAGE_NAME = "uatsvr_image"
 	UAT_CONTAINER = "5066357P_uatsvr"
+	userInput = ''
 
     }
 
