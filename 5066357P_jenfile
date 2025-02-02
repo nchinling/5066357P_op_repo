@@ -100,7 +100,18 @@ pipeline {
             steps {
 
 		echo "5066357P_OP_S3: Proceed stress test uat web server?"
-		input(message: "Proceed with stress test on uat web server")
+		script {
+                    def userInput = input(
+			message: 'Proceed with stress test on UAT web server?',
+                        parameters: [
+                            choice(
+                                name: 'Action', 
+                                choices: ['Proceed with stress test on uat web server', 'Abort']
+                            )
+                        ]
+                    )
+		}	
+
 
             }
 
