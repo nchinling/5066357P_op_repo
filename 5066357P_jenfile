@@ -102,7 +102,7 @@ pipeline {
                 sh '''
 
 		echo "5066357P_OP_S3: Proceed stress test uat web server?"
-		input(message: 'Proceed with stress test on uat web server')
+		input(message: "Proceed with stress test on uat web server")
 
 		'''
 
