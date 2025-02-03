@@ -212,11 +212,8 @@ pipeline {
 		  } else {
                         
 			def userInput = input(
-				message:''
-				parameters: [ 
-					choice(choices: ["Trigger roll back", "Troubleshooting"])
-				]
-
+				message:'',
+				parameters: [choice(name:'',choices: ["Trigger roll back", "Troubleshooting"])]
 			)
 
 			if (userInput == "Trigger roll back") {
