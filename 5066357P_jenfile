@@ -203,12 +203,14 @@ pipeline {
 
 		  sh 'curl -Is http://5066357P-prodsvr.localdomain | head -n 1 > /tmp/prodsvr-result-file'
                   
-		  def serverUp = sh(script: 'grep -q "HTTP/1.1 200 OK" /tmp/prodsvr-result-file', returnStatus: true) == 0
+		  def serverUp = sh(script: 'grep -q "HTTP/1.1 200 OK" /tmp/prodsvr-result-file', returnStatus: true) == 1
 
+		  // if 0 == 0, i.e. true
                   if (serverUp) {
 
 			echo "5066357P_OP_S7: Production website is operational"
-	
+
+		  // if 1 == 0, i.e. false
 		  } else {
                         
 			def userInput = input(
