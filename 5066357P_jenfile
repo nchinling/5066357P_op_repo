@@ -186,7 +186,8 @@ pipeline {
 
                 # completion statement
                 echo "5066357P_OP_S6: prod web server is backup and updated"
-
+		
+		'''
 
             }
 
