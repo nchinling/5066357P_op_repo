@@ -31,11 +31,11 @@ pipeline {
         APP_NAME = "INNO_WATER_TECH_APP"
 	PIPELINE_NAME = "5066357P_op_pipe"
 
-	# UAT image and container
+	// UAT image and container
 	UAT_IMAGE_NAME = "uatsvr_image"
 	UAT_CONTAINER = "5066357P_uatsvr"
 
-	# Prod image and container
+	// Prod image and container
 	PROD_IMAGE_NAME = "prodsvr_image"
 	PROD_CONTAINER = "5066357P_prodsvr"
 
