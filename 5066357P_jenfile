@@ -197,13 +197,25 @@ pipeline {
 
 	    stage('5066357P-opr-s7') {
 
-            steps {
+              steps {
 
-                sh 'echo "Stage 7 completed."'
+		script {     
 
-            }
+                  curl -Is http://5066357P-prodsvr.localdomain | head -n 1 > /tmp/prodsvr-result-file
 
-        }
+                  if grep -q "HTTP/1.1 200 OK" /tmp/prodsvr-result-file; then
+                        echo "5066357P_OP_S7: Production website is operational"
+
+                  else
+                        echo "5066357P_OP_S7: prod svr fails"
+
+                  fi
+
+		}
+
+              }
+
+           }
 
 
 
