@@ -28,10 +28,17 @@ pipeline {
 
     environment {
 
-        APP_NAME = 'INNO_WATER_TECH_APP_PIPELINE'
-	PIPELINE_NAME = '5066357P_op_pipe'
+        APP_NAME = "INNO_WATER_TECH_APP"
+	PIPELINE_NAME = "5066357P_op_pipe"
+
+	# UAT image and container
 	UAT_IMAGE_NAME = "uatsvr_image"
 	UAT_CONTAINER = "5066357P_uatsvr"
+
+	# Prod image and container
+	PROD_IMAGE_NAME = "prodsvr_image"
+	PROD_CONTAINER = "5066357P_prodsvr"
+
 
     }
 
@@ -158,7 +165,28 @@ pipeline {
 
             steps {
 
-                sh 'echo "Stage 6 completed."'
+                sh '''
+                # remove backup, if any
+                  if docker images | grep -q ${PROD_IMAGE_NAME}; then
+                     docker rmi -f ${PROD_IMAGE_NAME}
+                  fi
+
+                # create a backup image
+                docker commit ${PROD_CONTAINER} ${PROD_IMAGE_NAME}
+
+                #!/bin/bash
+                puppet resource file /tmp/5066357P ensure=directory
+                puppet resource file /tmp/5066357P/research ensure=absent force=true;
+                puppet resource file /tmp/5066357P/research ensure=directory;
+                cd /tmp/5066357P/research;
+                git clone https://github.com/nchinling/5066357P_op_repo;
+                targets=5066357P-prodsvr.localdomain;
+                locate_script="/tmp/5066357P/research/5066357P_op_repo/5066357P_script";
+                bolt script run $locate_script -t $targets -u clientadm -p user123 --no-host-key-check --r$
+
+                # completion statement
+                echo "5066357P_OP_S6: prod web server is backup and updated"
+
 
             }
 
