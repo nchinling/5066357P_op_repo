@@ -201,15 +201,32 @@ pipeline {
 
 		script {     
 
-                  curl -Is http://5066357P-prodsvr.localdomain | head -n 1 > /tmp/prodsvr-result-file
+		  sh 'curl -Is http://5066357P-prodsvr.localdomain | head -n 1 > /tmp/prodsvr-result-file'
+                  
+		  def serverUp = sh(script: 'grep -q "HTTP/1.1 200 OK" /tmp/prodsvr-result-file', returnStatus: true) == 0
 
-                  if grep -q "HTTP/1.1 200 OK" /tmp/prodsvr-result-file; then
-                        echo "5066357P_OP_S7: Production website is operational"
+                  if (serverUp) {
 
-                  else
-                        echo "5066357P_OP_S7: prod svr fails"
+			echo "5066357P_OP_S7: Production website is operational"
+	
+		  } else {
+                        
+			def userInput = input(
+				message:''
+				parameters: [ 
+					choice(choices: ["Trigger roll back", "Troubleshooting"])
+				]
 
-                  fi
+			)
+
+			if (userInput == "Trigger roll back") {
+				echo "5066357P_OP_S7: Production website is rolling back"
+			} else {
+				echo "5066357P_OP_S7: Troubleshooting of production website is in progress"
+			}
+
+
+                  }
 
 		}
 
