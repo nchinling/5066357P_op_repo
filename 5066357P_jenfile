@@ -163,7 +163,7 @@ pipeline {
 
 	    stage('5066357P-opr-s6') {
 
-            steps {
+              steps {
 
                 sh '''
                 # remove backup, if any
@@ -189,9 +189,9 @@ pipeline {
 		
 		'''
 
-            }
+             }
 
-        }
+         }
 
 
 
