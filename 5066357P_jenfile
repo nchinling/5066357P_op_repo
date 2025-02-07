@@ -84,7 +84,7 @@ pipeline {
 
                 sh '''
 		
-		//curl -Is http://5066357P-uatsvr.localdomain | head -n 1 > /tmp/uatsvr-result-file
+		//curl to the exposed port of VM
 		curl -Is http://localhost:32500 | head -n 1 > /tmp/uatsvr-result-file
 
 		if grep -q "HTTP/1.1 200 OK" /tmp/uatsvr-result-file; then
@@ -202,7 +202,8 @@ pipeline {
 
 		script {     
 
-		  sh 'curl -Is http://5066357P-prodsvr.localdomain | head -n 1 > /tmp/prodsvr-result-file'
+                  //curl to the exposed port of VM
+		  sh 'curl -Is http://localhost:32600 | head -n 1 > /tmp/prodsvr-result-file'
                   
 		  def serverUp = sh(script: 'grep -q "HTTP/1.1 200 OK" /tmp/prodsvr-result-file', returnStatus: true) == 0
 
