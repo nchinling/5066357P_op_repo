@@ -204,7 +204,7 @@ pipeline {
                  
 		  sh 'curl -Is http://localhost:32600 | head -n 1 > /tmp/prodsvr-result-file'
                   
-		  def serverUp = sh(script: 'grep -q "HTTP/1.1 200 OK" /tmp/prodsvr-result-file', returnStatus: true) == 0
+		  def serverUp = sh(script: 'grep -q "HTTP/1.1 200 OK" /tmp/prodsvr-result-file', returnStatus: true) == 1
 
 		  // if 0 == 0, i.e. true
                   if (serverUp) {
