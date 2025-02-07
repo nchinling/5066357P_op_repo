@@ -45,7 +45,7 @@ pipeline {
 
     stages {
 
-        stage('5066357P-opr-s1') {
+        stage('5066357P-OP-S1') {
 
             steps {
 
@@ -78,14 +78,15 @@ pipeline {
 
 
 
-        stage('5066357P-opr-s2') {
+        stage('5066357P-OP-S2') {
 
             steps {
 
                 sh '''
 		
-		curl -Is http://5066357P-uatsvr.localdomain | head -n 1 > /tmp/uatsvr-result-file
-		
+		//curl -Is http://5066357P-uatsvr.localdomain | head -n 1 > /tmp/uatsvr-result-file
+		curl -Is http://localhost:32500 | head -n 1 > /tmp/uatsvr-result-file
+
 		if grep -q "HTTP/1.1 200 OK" /tmp/uatsvr-result-file; then
 			echo "5066357P_OP_S2: uat svr is running"
 
@@ -102,7 +103,7 @@ pipeline {
 
 
 
-        stage('5066357P-opr-s3') {
+        stage('5066357P-OP-S3') {
 
             steps {
 
@@ -126,7 +127,7 @@ pipeline {
 
 
 
-        stage('5066357P-opr-s4') {
+        stage('5066357P-OP-S4') {
 
 		steps{
 
@@ -138,7 +139,7 @@ pipeline {
 
 
 
-        stage('5066357P-opr-s5') {
+        stage('5066357P-OP-S5') {
 
             steps {
 
@@ -161,7 +162,7 @@ pipeline {
         }
 
 
-	    stage('5066357P-opr-s6') {
+	    stage('5066357P-OP-S6') {
 
               steps {
 
@@ -195,7 +196,7 @@ pipeline {
 
 
 
-	    stage('5066357P-opr-s7') {
+	    stage('5066357P-OP-S7') {
 
               steps {
 
